@@ -40,38 +40,42 @@ def list_collections():
 
 @app.route('/update_document', methods=['POST'])
 def update_document():
-    collection_name = request.json.get('collection_name')
-    query = request.json.get('query')
-    update = request.json.get('update')
-    path = get_collection_path(collection_name)
-    with open(path, 'r') as f:
-        data = json.load(f)
-    for doc in data:
-        if all(doc.get(k) == v for k, v in query.items()):
-            doc.update(update)
-    with open(path, 'w') as f:
-        json.dump(data, f)
-    return jsonify({"message": "Document updated successfully"})
+    data = request.json
+    collection_name = data.get('collection_name')
+    query = data.get('query')
+    update = data.get('update')
+    if collection_name and query and update:
+        success = db.update_document(collection_name, query, update)
+        return jsonify({'success': success}), 200 if success else 400
+    return jsonify({'error': 'Collection name, query, and update required'}), 400
 
 @app.route('/delete_document', methods=['POST'])
 def delete_document():
-    collection_name = request.json.get('collection_name')
-    query = request.json.get('query')
-    path = get_collection_path(collection_name)
-    with open(path, 'r') as f:
-        data = json.load(f)
-    data = [doc for doc in data if not all(doc.get(k) == v for k, v in query.items())]
-    with open(path, 'w') as f:
-        json.dump(data, f)
-    return jsonify({"message": "Document deleted successfully"})
+    data = request.json
+    collection_name = data.get('collection_name')
+    query = data.get('query')
+    if collection_name and query:
+        success = db.delete_document(collection_name, query)
+        return jsonify({'success': success}), 200 if success else 400
+    return jsonify({'error': 'Collection name and query required'}), 400
 
 @app.route('/delete_all_documents', methods=['POST'])
 def delete_all_documents():
-    collection_name = request.json.get('collection_name')
-    path = get_collection_path(collection_name)
-    with open(path, 'w') as f:
-        f.write('[]')
-    return jsonify({"message": "All documents deleted successfully"})
+    data = request.json
+    collection_name = data.get('collection_name')
+    if collection_name:
+        success = db.delete_all_documents(collection_name)
+        return jsonify({'success': success}), 200 if success else 400
+    return jsonify({'error': 'Collection name required'}), 400
+
+@app.route('/delete_collection', methods=['POST'])
+def delete_collection():
+    data = request.json
+    collection_name = data.get('collection_name')
+    if collection_name:
+        success = db.delete_collection(collection_name)
+        return jsonify({'success': success}), 200 if success else 400
+    return jsonify({'error': 'Collection name required'}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
