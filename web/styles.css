@@ -53,3 +53,18 @@ pre {
     text-align: left;
     overflow: auto;
 }
+
+.download-button {
+    color: black;
+    background-color: green;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    font-size: 1em;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.download-button:hover {
+    background-color: darkgreen;
+}
