@@ -20,7 +20,9 @@
         <main>
             <h2>API Documentation</h2>
             <h3>Create Collection</h3>
-            <p>**POST** `/create_collection`</p>
+            <p>To create a new collection in Igor Database, use the following endpoint:</p>
+            <p><strong>POST</strong> <code>/create_collection</code></p>
+            <p><strong>Body:</strong></p>
             <pre>
 {
     "collection_name": "collection_name"
@@ -28,7 +30,9 @@
             </pre>
 
             <h3>Insert Document</h3>
-            <p>**POST** `/insert_document`</p>
+            <p>To insert a new document into a collection, use the following endpoint:</p>
+            <p><strong>POST</strong> <code>/insert_document</code></p>
+            <p><strong>Body:</strong></p>
             <pre>
 {
     "collection_name": "collection_name",
@@ -36,11 +40,13 @@
         "key": "value",
         ...
     }
-}   
+}
             </pre>
 
             <h3>Find Document</h3>
-            <p>**POST** `/find_document`</p>
+            <p>To find documents in a collection that match a query, use the following endpoint:</p>
+            <p><strong>POST</strong> <code>/find_document</code></p>
+            <p><strong>Body:</strong></p>
             <pre>
 {
     "collection_name": "collection_name",
