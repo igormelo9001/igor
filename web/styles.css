@@ -4,6 +4,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Evita rolagem horizontal */
 }
 
 .container {
@@ -11,8 +12,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Garante que a altura mínima cubra toda a viewport */
     text-align: center;
+    padding: 20px;
 }
 
 header {
@@ -42,7 +44,12 @@ nav a:hover {
 }
 
 main {
-    max-width: 600px;
+    max-width: 800px; /* Ajusta conforme necessário */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    overflow-y: auto; /* Permite rolagem vertical */
+    height: calc(100vh - 60px); /* Ajusta a altura do main */
+    padding: 20px;
+    box-sizing: border-box; /* Inclui padding e border na largura e altura total */
 }
 
 pre {
@@ -51,7 +58,7 @@ pre {
     padding: 10px;
     border: 1px solid green;
     text-align: left;
-    overflow: auto;
+    overflow: auto; /* Permite rolagem se o conteúdo for muito grande */
 }
 
 .download-button {

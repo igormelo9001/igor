@@ -3,86 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentação do Igor Database</title>
+    <title>Documentation</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Documentação do Igor Database</h1>
+            <h1>Igor Database Documentation</h1>
             <nav>
-                <a href="#about">Sobre</a>
-                <a href="#api">API</a>
-                <a href="#instructions">Instruções</a>
-                <a href="#download">Download</a>
+                <a href="index.html">Home</a>
+                <a href="documentation.html">Documentation</a>
+                <a href="repositoryIgorDatabase.html">Download Igor</a>
             </nav>
         </header>
-
         <main>
-            <section id="about">
-                <h2>Sobre</h2>
-                <p>Igor Database é um banco de dados NoSQL simples que armazena dados em arquivos de texto e pode ser gerenciado via terminal. Este documento fornece instruções sobre como configurar, usar e atualizar o Igor Database.</p>
+            <section id="introduction">
+                <h2>Introduction</h2>
+                <p>Welcome to the Igor Database documentation. Here you will find information on how to use the API and other details about the database.</p>
             </section>
-
             <section id="api">
-                <h2>Endpoints da API</h2>
-                <h3>Criar uma Coleção</h3>
-                <pre><code>curl -X POST http://127.0.0.1:5000/create_collection -H "Content-Type: application/json" -d '{"collection_name": "my_collection"}'</code></pre>
-
-                <h3>Inserir um Documento</h3>
-                <pre><code>curl -X POST http://127.0.0.1:5000/insert_document -H "Content-Type: application/json" -d '{"collection_name": "my_collection", "document": {"name": "Alice", "age": 25}}'</code></pre>
-
-                <h3>Encontrar Documentos</h3>
-                <pre><code>curl -X POST http://127.0.0.1:5000/find_documents -H "Content-Type: application/json" -d '{"collection_name": "my_collection", "query": {"name": "Alice"}}'</code></pre>
-
-                <h3>Listar Coleções</h3>
-                <pre><code>curl http://127.0.0.1:5000/list_collections</code></pre>
-
-                <h3>Atualizar um Documento</h3>
-                <pre><code>curl -X POST http://127.0.0.1:5000/update_document -H "Content-Type: application/json" -d '{"collection_name": "my_collection", "query": {"name": "Alice"}, "update": {"age": 26}}'</code></pre>
-
-                <h3>Deletar um Documento</h3>
-                <pre><code>curl -X POST http://127.0.0.1:5000/delete_document -H "Content-Type: application/json" -d '{"collection_name": "my_collection", "query": {"name": "Alice"}}'</code></pre>
-
-                <h3>Deletar Todos os Documentos de uma Coleção</h3>
-                <pre><code>curl -X POST http://127.0.0.1:5000/delete_all_documents -H "Content-Type: application/json" -d '{"collection_name": "my_collection"}'</code></pre>
-            </section>
-
-            <section id="instructions">
-                <h2>Instruções de Execução</h2>
-                <h3>1. Configurar o Ambiente</h3>
-                <pre><code># Clone o repositório
-git clone https://github.com/seu_usuario/igor-db.git
-
-# Navegue até o diretório do projeto
-cd igor-db
-
-# Crie e ative um ambiente virtual
-python -m venv venv
-source venv/bin/activate  # No Windows use: venv\Scripts\activate
-
-# Instale as dependências
-pip install -r requirements.txt</code></pre>
-
-                <h3>2. Iniciar o Banco de Dados</h3>
-                <pre><code># Execute o servidor Flask
-python -m igor.api</code></pre>
-
-                <h3>3. Parar o Banco de Dados</h3>
-                <pre><code># Para parar o servidor Flask, você pode usar CTRL+C no terminal onde o servidor está rodando.</code></pre>
-
-                <h3>4. Usar a Aplicação</h3>
-                <p>Após iniciar o banco de dados, você pode usar os endpoints da API listados acima para interagir com o banco de dados Igor. Use os exemplos de `curl` fornecidos para testar as funcionalidades.</p>
-            </section>
-
-            <section id="download">
-                <h2>Download</h2>
-                <a href="download" class="download-button">Baixar Igor Database</a>
-            </section>
-
-            <section>
-                <h2>Contato</h2>
-                <p>Para mais informações ou suporte, entre em contato através do email: <a href="mailto:support@igor-db.com" style="color: lightgreen;">support@igor-db.com</a></p>
+                <h2>API Documentation</h2>
+                <p>Here are the available API endpoints:</p>
+                <h3>Creating a Collection</h3>
+                <pre><code>
+curl -X POST http://127.0.0.1:5000/create_collection \
+    -H "Content-Type: application/json" \
+    -d '{"collection_name": "my_collection"}'
+                </code></pre>
+                <h3>Inserting a Document</h3>
+                <pre><code>
+curl -X POST http://127.0.0.1:5000/insert_document \
+    -H "Content-Type: application/json" \
+    -d '{"collection_name": "my_collection", "document": {"name": "igor", "age": 34}}'
+                </code></pre>
+                <h3>Finding Documents</h3>
+                <pre><code>
+curl -X POST http://127.0.0.1:5000/find_documents \
+    -H "Content-Type: application/json" \
+    -d '{"collection_name": "my_collection", "query": {"name": "igor"}}'
+                </code></pre>
+                <h3>Updating a Document</h3>
+                <pre><code>
+curl -X POST http://127.0.0.1:5000/update_document \
+    -H "Content-Type: application/json" \
+    -d '{"collection_name": "my_collection", "query": {"name": "igor"}, "update": {"age": 35}}'
+                </code></pre>
+                <h3>Deleting a Document</h3>
+                <pre><code>
+curl -X POST http://127.0.0.1:5000/delete_document \
+    -H "Content-Type: application/json" \
+    -d '{"collection_name": "my_collection", "query": {"name": "igor"}}'
+                </code></pre>
+                <h3>Deleting All Documents</h3>
+                <pre><code>
+curl -X POST http://127.0.0.1:5000/delete_all_documents \
+    -H "Content-Type: application/json" \
+    -d '{"collection_name": "my_collection"}'
+                </code></pre>
+                <h3>Deleting a Collection</h3>
+                <pre><code>
+curl -X POST http://127.0.0.1:5000/delete_collection \
+    -H "Content-Type: application/json" \
+    -d '{"collection_name": "my_collection"}'
+                </code></pre>
             </section>
         </main>
     </div>
