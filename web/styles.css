@@ -1,0 +1,55 @@
+body {
+    background-color: black;
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: green;
+    text-decoration: none;
+    margin: 0 10px;
+    border: 1px solid green;
+    padding: 5px 10px;
+}
+
+nav a:hover {
+    background-color: green;
+    color: black;
+}
+
+main {
+    max-width: 600px;
+}
+
+pre {
+    background-color: black;
+    color: green;
+    padding: 10px;
+    border: 1px solid green;
+    text-align: left;
+    overflow: auto;
+}
